@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Configurar o SSH para usar a chave privada da variável de ambiente
+mkdir -p ~/.ssh
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDvQjfs7veIqwiQ5Jh9XU2CHRMz9DjSoPyyTkOtZPIKRgWNBmFexM342OhcqZbKKGIOANtp0fYal/0mquc3AyyN2UXSSbjLLd+RbD1DnhSWpJj8vQyvL+Ul7HHNRtBTzklg86oBpl2ks/W/WxOlKEs87VWra0lXqBN9ulAQG5okcaC/MXbTbMMrqJ5SbyOzSNgPXDMy6G7XrHFTZyIlYsbJZf77sssJZKTwb4If3nuHuAIA7hVI2ELa7u2IUk08ht9VkFqMBiCjVLezqPzNZJarnHi9vz9/aVEwidoxaZJfgDypVmHV32hQpLkLX5Rc+6xT45YwUmVW4hFN9wLyXAaq6qICBXyElsjqZGXCtRnezpurBqzzJHEfHzwyT0sylc+v9G2uwzfNNkzNFcCmBqIQS6snpHTamAHzf0D+CTmVAoYPfo+QkIB7Ht2vDo4OH6p4EsRtFDvoim0QoWgE8VzBQWjOkoSY6Iz9NgZcvceOseG4urzVYgoDCwbw0wcaXS/trcxuFE0xzoa51UZqFc4P5R8r8lPFyFjsdd7WlcIM1vqOEWTxJslHQxshZcFt1qHeG5WjyfHVJ1BbVuqTs7WLmJTZT4f09PeGh2BwSMjpwnRjGyJeiT+KT5qFcp16GncxwCdIK0XtoEGkIRlGQZgGIv3Pa5M2bVFKpeN9Qq5bbw== knolojji@gmail.com" > ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
+
+# Adicionar o GitHub aos hosts conhecidos
+ssh-keyscan github.com >> ~/.ssh/known_hosts
