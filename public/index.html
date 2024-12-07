@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Estilo Personalizado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Lista de Produtos -->
+        <div class="product-list">
+            <h2>PRODUTOS</h2>
+
+            <div class="product" alt="MACRO4MAX">
+                <img src="assets/macro4max.png" alt="MACRO4MAX">
+                <div>
+                    <h3>MACRO4MAX</h3>
+                    <p>A melhor macro do mercado</p>
+                </div>
+            </div>
+        
+            <div class="product" data-product="MICRO4MAX">
+                <img src="assets/micro4max.png" alt="MICRO4MAX">
+                <div>
+                    <h3>MICRO4MAX</h3>
+                    <p>A melhor micro do mercado</p>
+                </div>
+            </div>
+            <div class="product" data-product="CURA4MAX">
+                <img src="assets/cura4max.png" alt="CURA4MAX">
+                <div>
+                    <h3>CURA4MAX</h3>
+                    <p>A melhor cura do mercado</p>
+                </div>
+            </div>
+            <div class="product" data-product="FORT4MAX">
+                <img src="assets/fort4max.png" alt="FORT4MAX">
+                <div>
+                    <h3>FORT4MAX</h3>
+                    <p>A melhor fort do mercado</p>
+                </div>
+            </div>
+
+            <p id="dynamic-message">Powered by Knolojji</p>
+        </div>
+   
+        <!-- Interface de Chat -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="product-info">
+                    <img id="product-image" src="assets/logo.png" alt="Logo">
+                    <h2 id="product-title">TECH4CHAT</h2>
+                </div>
+            </div>
+            <div id="chat-box" class="chat-box"></div>
+            <div class="chat-input-container">
+                <input type="text" id="user-input" placeholder="Faça sua pergunta" autocomplete="off">
+                <button id="send-button">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+/* Estilos Globais */
+body, h2, h3, p, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Principal */
+.container {
+    display: flex;
+    width: 85%;
+    max-width: 1200px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+/* Estilos da Lista de Produtos */
+.product-list {
+    width: 30%;
+    background-color: #f7f9fc;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.product-list h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 2px solid #FF0000;
+    padding-bottom: 10px;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    background-color: #e6f2ff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    border-radius: 8px;
+}
+
+.product h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #444;
+}
+
+.product p {
+    margin: 5px 0 0 0;
+    color: #888;
+    font-size: 14px;
+}
+
+/* Mensagem dinâmica no menu lateral */
+#dynamic-message {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    color: #333;
+    font-style: italic;
+}
+
+/* Estilos do Chat */
+.chat-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f9fafb;
+    position: relative;
+}
+
+/* Estilo do cabeçalho do chat */
+.chat-header {
+    display: flex;
+    justify-content: space-between; /* Garante que logo e texto fiquem separados */
+    align-items: center; /* Alinha o logo e o texto verticalmente */
+    gap: 10px; /* Espaço entre o logo e o texto */
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.product-info img {
+    width: 50px; /* Tamanho fixo do logo */
+    height: 50px;
+    border-radius: 50%; /* Deixa o logo circular, se necessário */
+}
+
+.product-info {
+    display: flex;
+    align-items: center; /* Alinha o logo e o texto verticalmente */
+    justify-content: flex-start; /* Garante que o texto fique ao lado do logo */
+    gap: 10px; /* Espaço entre o logo e o texto */
+}
+/* Caixa de Chat */
+.chat-box {
+    height: 400px;
+    overflow-y: auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Mensagem centralizada no topo */
+.center-message {
+    background-color: transparent;
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0 auto 20px auto;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+}
+
+/* Ajuste do container das mensagens */
+.message-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 75%;
+}
+
+/* Mensagens do usuário alinhadas à direita */
+.user-message {
+    align-self: flex-end;
+    background-color: #C10001;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Mensagens do bot alinhadas à esquerda */
+.bot-message {
+    align-self: flex-start;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Estilo para o horário das mensagens */
+.message-time {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: right; /* Alinha à direita (ou left para mensagens do bot, se preferir) */
+    display: block; /* Garante que o horário fique em uma nova linha */
+}
+
+/* Horário das mensagens do usuário alinhado à direita */
+.user-message + .message-time {
+    text-align: right;
+    color: white;
+}
+
+/* Horário das mensagens do bot alinhado à esquerda */
+.bot-message + .message-time {
+    text-align: left;
+    color: black;
+
+}
+
+/* Caixa de Entrada */
+.chat-input-container {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    margin-right: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+}
+
+#send-button {
+    padding: 12px 20px;
+    background-color: #C10001;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#send-button:hover {
+    background-color: #006bb3;
+}
