@@ -157,4 +157,3 @@ websocket-client==1.5.2
 Werkzeug==3.0.1
 widgetsnbextension==4.0.7
 yarl==1.9.4
-python = 3.7
