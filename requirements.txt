@@ -120,7 +120,7 @@ pytesseract==0.3.13
 python-dateutil==2.8.2
 python-dotenv==1.0.1
 python-json-logger==2.0.7
-pywin32==306
+pywin32==306; platform_system == "Windows"
 pywinpty==2.0.10
 PyYAML==6.0
 pyzmq==25.1.0
