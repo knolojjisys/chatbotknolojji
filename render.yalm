@@ -1,0 +1,10 @@
+services:
+  - name: chatbot-knolojji
+    type: web
+    runtime: python
+    envVars:
+      - key: PORT
+        value: 8080
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python public/py/app.py"
+    plan: free
