@@ -1,12 +1,16 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-# Importe suas funções do main.py
+import os
+
+# Importe suas funções
 from pdf_utils import extrair_texto_com_pdfplumber as extrair_texto_pdf
 from api_interaction import buscar_trecho_no_conteudo
 from utils import normalizar_pergunta
 
 app = Flask(__name__)
-CORS(app)
+
+# Configurar CORS para aceitar apenas o domínio do Firebase
+CORS(app, resources={r"/*": {"origins": "knolojjichatv1.web.app"}})
 
 # Carregue o conteúdo do PDF
 caminho_pdf = "teste.pdf"
@@ -31,4 +35,4 @@ def chat():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port, debug=True)
-    
+
