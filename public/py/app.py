@@ -12,6 +12,10 @@ CORS(app, origins=["https://knolojjichatv1.web.app"])
 # Configuração do caminho para os PDFs
 CAMINHO_PDFS = "public/pdfs/"
 
+@app.route('/', methods=['GET'])
+def home():
+    return "Bem-vindo ao Chatbot Knolojji! O backend está funcionando."
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
