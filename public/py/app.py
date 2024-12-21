@@ -1,29 +1,39 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import os
-from pdf_utils import extrair_texto_com_pdfplumber
+# Importar suas funções
+from pdf_utils import extrair_texto_com_pdfplumber as extrair_texto_pdf
 from api_interaction import buscar_trecho_no_conteudo
 from utils import normalizar_pergunta
 
 app = Flask(__name__)
 CORS(app)
 
-# Caminho dinâmico do PDF
+# Configuração do caminho para os PDFs
+CAMINHO_PDFS = "public/pdfs/"
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
     question = data.get("question")
-    product = data.get("product")  # Recebe o produto selecionado
+    product = data.get("product")
+
     if not question or not product:
         return jsonify({"answer": "Pergunta ou produto inválido!"}), 400
 
-    # Caminho do PDF baseado no produto selecionado
-    caminho_pdf = f"pdfs/{product}.pdf"
-    if not os.path.exists(caminho_pdf):
-        return jsonify({"answer": "PDF do produto não encontrado!"}), 404
+    # Gera o caminho completo para o arquivo PDF
+    nome_arquivo = f"{product}.pdf"
+    caminho_completo = os.path.join(CAMINHO_PDFS, nome_arquivo)
+
+    # Verifica se o arquivo PDF existe
+    if not os.path.exists(caminho_completo):
+        return jsonify({"answer": f"PDF do produto '{product}' não encontrado!"}), 404
 
     # Extrai o conteúdo do PDF
-    conteudo = extrair_texto_com_pdfplumber(caminho_pdf)
+    try:
+        conteudo = extrair_texto_pdf(caminho_completo)
+    except Exception as e:
+        return jsonify({"answer": f"Erro ao processar o PDF: {str(e)}"}), 500
 
     # Normaliza a pergunta e busca a resposta
     pergunta_normalizada = normalizar_pergunta(question)
@@ -36,4 +46,4 @@ def chat():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=True)
