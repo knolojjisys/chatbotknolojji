@@ -1,9 +1,7 @@
 services:
-  - name: chatbot-knolojji
-    type: web
-    runtime: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "public/py/app.py"
-    envVars:
-      - key: PORT
-        value: 8080
+  - type: web
+    name: chatbot-knolojji
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn app:app --bind 0.0.0.0:8080
