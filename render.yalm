@@ -4,4 +4,5 @@ services:
     env: python
     plan: free
     buildCommand: ""
-    startCommand: gunicorn app:app --bind 0.0.0.0:8080
+    startCommand: gunicorn public.py.app:app --bind 0.0.0.0:8080
+
