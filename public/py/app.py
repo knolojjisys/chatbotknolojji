@@ -7,7 +7,7 @@ from api_interaction import buscar_trecho_no_conteudo
 from utils import normalizar_pergunta
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://knolojjichatv1.web.app"])
 
 # Configuração do caminho para os PDFs
 CAMINHO_PDFS = "public/pdfs/"
