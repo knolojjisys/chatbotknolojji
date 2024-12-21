@@ -2,7 +2,5 @@ services:
   - type: web
     name: chatbot-knolojji
     env: python
-    plan: free
     buildCommand: ""
-    startCommand: gunicorn public.py.app:app --bind 0.0.0.0:8080
-
+    startCommand: gunicorn -w 4 -b 0.0.0.0:10000 app:app
