@@ -127,10 +127,11 @@ async function sendMessage() {
 
     try {
                     const response = await fetch("https://chatbot-knolojji.onrender.com/chat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question, product: selectedProduct })
-        });
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question, product: selectedProduct })
+});
+
         const data = await response.json();
 
         // Adiciona a resposta do bot ao chat
