@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 # Importar suas funções
-from pdf_utils import extrair_texto_com_pdfplumber as extrair_texto_pdf
+from pdf_utils import extrair_texto_com_pdfplumber as extrair_texto_pdf  
 from api_interaction import buscar_trecho_no_conteudo
 from utils import normalizar_pergunta
 
