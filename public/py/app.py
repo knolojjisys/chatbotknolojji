@@ -1,29 +1,27 @@
 import os
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-# Importar funções personalizadas
 from pdf_utils import extrair_texto_com_pdfplumber as extrair_texto_pdf
 from api_interaction import buscar_trecho_no_conteudo
 from utils import normalizar_pergunta
 
-# Configurar o Flask
-app = Flask(__name__, static_folder='public')
+app = Flask(__name__)
 CORS(app)
 
-# Caminhos
+# Configuração de pastas conforme a estrutura fornecida
 CAMINHO_PDFS = "public/pdfs/"
 
-# Rota para o frontend (index.html)
+# Rota para servir o frontend (index.html)
 @app.route('/')
 def serve_index():
     return send_from_directory('public', 'index.html')
 
-# Rotas para arquivos estáticos (CSS e JS)
+# Rota para servir arquivos estáticos diretamente
 @app.route('/<path:filename>')
 def serve_static_files(filename):
     return send_from_directory('public', filename)
 
-# Rota para o chatbot
+# Rota do chatbot
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
@@ -56,7 +54,6 @@ def chat():
     else:
         return jsonify({"answer": "Desculpe, não consegui encontrar uma resposta adequada."})
 
-# Executar o servidor
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port, debug=True)
