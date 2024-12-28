@@ -22,6 +22,8 @@ def chat():
     question = data.get("question")
     product = data.get("product")
 
+    print(f"Recebido: question={question}, product={product}")
+
     if not question or not product:
         return jsonify({"answer": "Pergunta ou produto inválido!"}), 400
 
@@ -29,16 +31,22 @@ def chat():
     nome_arquivo = f"{product}.pdf"
     caminho_completo = os.path.join(CAMINHO_PDFS, nome_arquivo)
 
+    print(f"Procurando arquivo em: {caminho_completo}")
+
     # Verifica se o arquivo PDF existe
     if not os.path.exists(caminho_completo):
+        print("Arquivo não encontrado!")
         return jsonify({"answer": f"PDF do produto '{product}' não encontrado!"}), 404
 
     # Extrai o conteúdo do PDF
     try:
         conteudo = extrair_texto_pdf(caminho_completo)
     except Exception as e:
+        print(f"Erro ao processar o PDF: {str(e)}")
         return jsonify({"answer": f"Erro ao processar o PDF: {str(e)}"}), 500
 
+    print("PDF processado com sucesso!")
+    
     # Normaliza a pergunta e busca a resposta
     pergunta_normalizada = normalizar_pergunta(question)
     resposta = buscar_trecho_no_conteudo(conteudo, pergunta_normalizada, cache_respostas={})
