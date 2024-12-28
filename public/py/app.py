@@ -1,15 +1,15 @@
 from flask import Flask, request, jsonify, send_from_directory
 import os
 from flask_cors import CORS
-# Importar suas funções
+# Importar funções personalizadas
 from pdf_utils import extrair_texto_com_pdfplumber as extrair_texto_pdf
 from api_interaction import buscar_trecho_no_conteudo
 from utils import normalizar_pergunta
 
 app = Flask(__name__, static_folder="../public", static_url_path="")
-CORS(app, origins=["https://knolojjichatv1.web.app"])
+CORS(app)
 
-# Configuração do caminho para os PDFs
+# Caminho para os PDFs
 CAMINHO_PDFS = "../public/pdfs/"
 
 @app.route('/')
