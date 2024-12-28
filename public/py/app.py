@@ -1,27 +1,25 @@
-import os
 from flask import Flask, request, jsonify, send_from_directory
+import os
 from flask_cors import CORS
+# Importar suas funções
 from pdf_utils import extrair_texto_com_pdfplumber as extrair_texto_pdf
 from api_interaction import buscar_trecho_no_conteudo
 from utils import normalizar_pergunta
 
-app = Flask(__name__)
-CORS(app)
+app = Flask(__name__, static_folder="../public", static_url_path="")
+CORS(app, origins=["https://knolojjichatv1.web.app"])
 
-# Configuração de pastas conforme a estrutura fornecida
-CAMINHO_PDFS = "public/pdfs/"
+# Configuração do caminho para os PDFs
+CAMINHO_PDFS = "../public/pdfs/"
 
-# Rota para servir o frontend (index.html)
 @app.route('/')
-def serve_index():
-    return send_from_directory('public', 'index.html')
+def index():
+    return send_from_directory("../public", "index.html")
 
-# Rota para servir arquivos estáticos diretamente
-@app.route('/<path:filename>')
-def serve_static_files(filename):
-    return send_from_directory('public', filename)
+@app.route('/<path:path>')
+def static_files(path):
+    return send_from_directory("../public", path)
 
-# Rota do chatbot
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
